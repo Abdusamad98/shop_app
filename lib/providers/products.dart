@@ -45,15 +45,17 @@ class Products with ChangeNotifier {
         'https://flutter-shop-app-1f9b8-default-rtdb.firebaseio.com/products.json');
     try {
       final response = await http.get(url);
-      final extractedDate = json.decode(response.body) as Map<String, dynamic>;
+      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      if (extractedData == null) return;
+
       final List<Product> loadedProducts = [];
-      extractedDate.forEach((productId, prodData) {
+      extractedData.forEach((productId, prodData) {
         loadedProducts.add(Product(
           id: productId,
           title: prodData['title'],
           description: prodData['description'],
           price: prodData['price'],
-          isFavourite: prodData['isFavorite'],
+          isFavorite: prodData['isFavorite'],
           imageUrl: prodData['imageUrl'],
         ));
       });
@@ -77,7 +79,7 @@ class Products with ChangeNotifier {
             'description': product.description,
             'imageUrl': product.imageUrl,
             'price': product.price,
-            'isFavorite': product.isFavourite,
+            'isFavorite': product.isFavorite,
           },
         ),
       );
@@ -88,7 +90,7 @@ class Products with ChangeNotifier {
         price: product.price,
         description: product.description,
         imageUrl: product.imageUrl,
-        isFavourite: false,
+        isFavorite: false,
       );
       _items.add(newProduct);
       notifyListeners();
@@ -133,12 +135,12 @@ class Products with ChangeNotifier {
   }
 
   List<Product> get favoriteItems {
-    return [..._items].where((element) => element.isFavourite).toList();
+    return [..._items].where((element) => element.isFavorite).toList();
   }
 
   Future<void> removeProduct(String id) async {
     var url = Uri.parse(
-        'https://flutter-shop-app-1f9b8-default-rtdb.firebaseio.com/products/$id');
+        'https://flutter-shop-app-1f9b8-default-rtdb.firebaseio.com/products/$id.json');
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
     var existingProduct = _items[existingProductIndex];
 

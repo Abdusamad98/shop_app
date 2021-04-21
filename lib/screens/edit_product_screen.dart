@@ -161,7 +161,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       onSaved: (value) {
                         _editedProduct = Product(
                           id: _editedProduct.id,
-                          isFavourite: _editedProduct.isFavourite,
+                          isFavorite: _editedProduct.isFavorite,
                           title: value,
                           description: _editedProduct.description,
                           price: _editedProduct.price,
@@ -200,7 +200,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       onSaved: (value) {
                         _editedProduct = Product(
                             id: _editedProduct.id,
-                            isFavourite: _editedProduct.isFavourite,
+                            isFavorite: _editedProduct.isFavorite,
                             title: _editedProduct.title,
                             description: _editedProduct.description,
                             price: double.parse(value),
@@ -225,7 +225,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       onSaved: (value) {
                         _editedProduct = Product(
                             id: _editedProduct.id,
-                            isFavourite: _editedProduct.isFavourite,
+                            isFavorite: _editedProduct.isFavorite,
                             title: _editedProduct.title,
                             description: value,
                             price: _editedProduct.price,
@@ -273,7 +273,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             onSaved: (value) {
                               _editedProduct = Product(
                                   id: _editedProduct.id,
-                                  isFavourite: _editedProduct.isFavourite,
+                                  isFavorite: _editedProduct.isFavorite,
                                   title: _editedProduct.title,
                                   description: _editedProduct.description,
                                   price: _editedProduct.price,
